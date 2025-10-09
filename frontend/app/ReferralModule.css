@@ -302,3 +302,104 @@
   margin-bottom: 0.5rem;
   color: #374151;
 }
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between; /* Moves content to left/right ends */
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+}
+
+.header-logo img {
+  height: 48px;         /* Adjust as needed for header size */
+  width: auto;          /* Preserve aspect ratio */
+  border-radius: 0;     /* Remove circle cropping */
+  object-fit: contain;  /* Fit whole logo inside the area */
+  background: none;
+  display: block;
+}
+
+/* Button styling */
+.button-primary {
+  background-color: #2563eb; /* nice blue */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  margin-left: 10px;
+}
+
+.button-primary:hover {
+  background-color: #1e40af;
+}
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  padding: 32px 32px 16px 32px;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 8px 16px;
+}
+
+.footer-about {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 340px;  /* Makes sure the left block is wide enough for logo and text */
+}
+
+.footer-logo-img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+/* Make headings bold and clear */
+.footer-section h4 {
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Responsive - stack on small screens */
+@media (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .footer-section {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .footer-logo-img {
+    margin-bottom: 8px;
+  }
+}

@@ -158,33 +158,39 @@ export default function Dashboard() {
         {renderTab()}
       </div>
 
-      {/* Footer */}
       <footer className="footer">
-        <div className="footer-section">
-          <h4>Accountant's Factory</h4>
-          <p>Professional accounting services and referral network helping businesses grow with compliance.</p>
-          <p>Contact: 91766 71206</p>
-        </div>
-        <div className="footer-section">
-          <h4>Services</h4>
-          <p>
-            Virtual CFO<br />
-            Tax Filing<br />
-            Compliance<br />
-            Bookkeeping<br />
-            Business Advisory
-          </p>
-        </div>
-        <div className="footer-section">
-          <h4>Support</h4>
-          <p>
-            Help Center<br />
-            Contact Us<br />
-            Partner Portal<br />
-            Documentation
-          </p>
-        </div>
-      </footer>
+  <div className="footer-section footer-about">
+    <img src="/logo.jpg" alt="Accountants Factory Logo" className="footer-logo-img" />
+    <div>
+      <h4>Accountant's Factory</h4>
+      <p>Professional accounting services and referral network helping businesses grow with compliance.</p>
+      <p>
+        <span role="img" aria-label="phone">📞</span>
+        &nbsp;91766 71206
+      </p>
+    </div>
+  </div>
+  <div className="footer-section">
+    <h4>Services</h4>
+    <p>
+      Virtual CFO<br />
+      Tax Filing<br />
+      Compliance<br />
+      Bookkeeping<br />
+      Business Advisory
+    </p>
+  </div>
+  <div className="footer-section">
+    <h4>Support</h4>
+    <p>
+      Help Center<br />
+      Contact Us<br />
+      Partner Portal<br />
+      Documentation
+    </p>
+  </div>
+</footer>
+
     </div>
   );
 }
