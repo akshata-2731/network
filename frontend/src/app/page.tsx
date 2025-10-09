@@ -1,6 +1,10 @@
+"use client";
 import './ReferralModule.css';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
   const services = [
     { title: "Virtual CFO Services", desc: "Strategic financial planning and analysis", badge: "15%" },
     { title: "Incorporation & Startup Advisory", desc: "Complete business setup and registration", badge: "₹5,000" },
@@ -37,12 +41,17 @@ export default function Home() {
     { q: "What services can I refer clients for?", a: "You can refer for all listed accounting, compliance, and advisory services." },
   ];
 
+  // Handler for button click
+  const handleJoinClick = () => {
+    router.push('/login');
+  };
+
   return (
     <div className="container">
       {/* Header */}
       <header className="header">
         <div className="header-logo">Accountant's Factory</div>
-        <button className="button-primary">Join Network</button>
+        <button className="button-primary" onClick={handleJoinClick}>Join Network</button>
       </header>
 
       {/* Hero */}
@@ -69,7 +78,9 @@ export default function Home() {
           </div>
         </div>
         <div className="cta-buttons">
-          <button className="button-primary">Join the Network</button>
+          <button className="button-primary" onClick={handleJoinClick}>
+            Join the Network
+          </button>
           <button className="button-outline">Learn More</button>
         </div>
       </section>
@@ -119,7 +130,7 @@ export default function Home() {
       <section className="cta-section">
         <h3>Ready to Start Earning?</h3>
         <p>Join our referral network today and start earning commissions on every successful referral</p>
-        <button className="cta-button">Join the Referral Network</button>
+        <button className="cta-button" onClick={handleJoinClick}>Join the Referral Network</button>
       </section>
 
       {/* Footer */}
