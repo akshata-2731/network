@@ -1,10 +1,13 @@
 "use client";
+
 import './ReferralModule.css';
-import logo from './logo.jpg'; // Make sure your logo is correctly imported for your setup
+import logo from './logo.jpg'; // If using plain src: <img src="/logo.jpg" ...>
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState(0);
+  const router = useRouter();
 
   const services = [
     { title: "Virtual CFO Services", desc: "Strategic financial planning and analysis", badge: "15%" },
@@ -16,7 +19,6 @@ export default function Dashboard() {
     { title: "Business Advisory", desc: "Strategic business consulting and growth advisory", badge: "20%" },
   ];
 
-  // Tab button names
   const tabs = [
     'Services & Rates',
     'Submit Referral',
@@ -24,7 +26,6 @@ export default function Dashboard() {
     'Commission Wallet',
   ];
 
-  // ---- Components for each tab ----
   function ServicesComponent() {
     return (
       <section className="services">
@@ -47,7 +48,7 @@ export default function Dashboard() {
     return (
       <section className="submit-referral">
         <h2>Submit New Referral</h2>
-        <form className="referral-form" onSubmit={e => {e.preventDefault(); alert('Referral submitted!')}}>
+        <form className="referral-form" onSubmit={e => { e.preventDefault(); alert('Referral submitted!') }}>
           <input type="text" placeholder="Client Name *" required />
           <input type="tel" placeholder="Mobile Number *" required />
           <input type="email" placeholder="Email Address" required />
@@ -123,7 +124,6 @@ export default function Dashboard() {
     );
   }
 
-  // ---- Choose current tab's content ----
   function renderTab() {
     if (activeTab === 0) return <ServicesComponent />;
     if (activeTab === 1) return <ReferralComponent />;
@@ -132,12 +132,26 @@ export default function Dashboard() {
     return null;
   }
 
+  // Handle sign out to navigate to ReferralModule page
+  function handleSignOut() {
+    router.push('/'); // Adjust path if ReferralModule is on a different route
+  }
+
   return (
     <div className="container">
       {/* Header */}
       <header className="header">
-        <img src={logo.src} alt="Accountant's Factory" className="header-logo-img" />
-        <button className="button-primary">Join Network</button>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <img
+            src={logo.src || "/logo.jpg"}
+            alt="Accountant's Factory"
+            className="header-logo-img"
+          />
+          <span style={{ fontWeight: 700, fontSize: 22, color: "#374151" }}>Accountants Factory</span>
+        </div>
+        <button className="button-outline" onClick={handleSignOut}>
+          Sign Out
+        </button>
       </header>
 
       {/* Tabs */}
@@ -153,44 +167,10 @@ export default function Dashboard() {
         ))}
       </nav>
 
-      {/* Main tab panel */}
+      {/* Main content */}
       <div className="tab-content">
         {renderTab()}
       </div>
-
-      <footer className="footer">
-  <div className="footer-section footer-about">
-    <img src="/logo.jpg" alt="Accountants Factory Logo" className="footer-logo-img" />
-    <div>
-      <h4>Accountant's Factory</h4>
-      <p>Professional accounting services and referral network helping businesses grow with compliance.</p>
-      <p>
-        <span role="img" aria-label="phone">📞</span>
-        &nbsp;91766 71206
-      </p>
-    </div>
-  </div>
-  <div className="footer-section">
-    <h4>Services</h4>
-    <p>
-      Virtual CFO<br />
-      Tax Filing<br />
-      Compliance<br />
-      Bookkeeping<br />
-      Business Advisory
-    </p>
-  </div>
-  <div className="footer-section">
-    <h4>Support</h4>
-    <p>
-      Help Center<br />
-      Contact Us<br />
-      Partner Portal<br />
-      Documentation
-    </p>
-  </div>
-</footer>
-
     </div>
   );
 }
